@@ -1,0 +1,30 @@
+type Garden = record {
+  id : text;
+  plants : vec text;
+  owner : principal;
+  name : text;
+  createdAt : nat64;
+  updatedAt : opt nat64;
+  image : text;
+  location : text;
+};
+type GardenPayload = record {
+  plants : vec text;
+  name : text;
+  image : text;
+  location : text;
+};
+type _AzleResult = variant { Ok : Garden; Err : text };
+type _AzleResult_1 = variant { Ok : vec Garden; Err : text };
+type _AzleResult_2 = variant { Ok : vec text; Err : text };
+service : () -> {
+  addPlantToGarden : (text, text) -> (_AzleResult);
+  createGarden : (GardenPayload) -> (_AzleResult);
+  deleteGarden : (text) -> (_AzleResult);
+  getAllGardens : () -> (_AzleResult_1) query;
+  getGarden : (text) -> (_AzleResult) query;
+  listPlantsInGarden : (text) -> (_AzleResult_2) query;
+  removePlantFromGarden : (text, text) -> (_AzleResult);
+  updateGarden : (text, GardenPayload) -> (_AzleResult);
+  updateGardenImage : (text, text) -> (_AzleResult);
+}
