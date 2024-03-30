@@ -34,6 +34,8 @@ import {
     image: string;
   }>;
   
+
+  // garder is a bets place
   const gardenStorage = new StableBTreeMap<string, Garden>(0, 44, 1024);
   
   $update;
